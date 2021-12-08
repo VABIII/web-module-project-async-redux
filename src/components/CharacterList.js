@@ -9,8 +9,8 @@ const CharacterList = props => {
     return (
         <div>
             {
-                characters.map( (char, i) => {
-                  return   <Character key={i} char={char}/>
+                characters.map( char => {
+                  return   <Character key={char.id} char={char}/>
                 })
             }
         </div>
