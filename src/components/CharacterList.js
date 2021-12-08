@@ -1,6 +1,5 @@
 import React from "react";
 import Character from "./Character";
-import "./CharacterList.css"
 import {connect} from "react-redux";
 
 

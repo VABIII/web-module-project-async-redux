@@ -1,11 +1,10 @@
 import { FETCH_SUCCESS,FETCH_START, FETCH_FAIL } from "../actions";
 
-
 const initialState = {
     characters: [],
     isFetching: false,
     error: ""
-}
+};
 
 
 const reducer = (state=initialState, action) => {
@@ -32,8 +31,7 @@ const reducer = (state=initialState, action) => {
         default:
             return state
     }
-}
-
+};
 
 export default reducer;
 

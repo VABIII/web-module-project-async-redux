@@ -4,17 +4,18 @@ export const FETCH_START = "FETCH-START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAIL = "FETCH_FAIL";
 
+
 export const fetchStart = () => {
     return({type: FETCH_START} )
 };
 
 export const fetchSuccess = chars => {
     return({type: FETCH_SUCCESS, payload: chars})
-}
+};
 
 export const fetchFail = err => {
     return({type: FETCH_FAIL, payload: err})
-}
+};
 
 
 export const getChars = () => (dispatch) =>{
@@ -28,8 +29,7 @@ export const getChars = () => (dispatch) =>{
         .catch(err => {
             dispatch(fetchFail(err))
         })
-
-}
+};
 
 
 
