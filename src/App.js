@@ -2,32 +2,38 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import axios from "axios";
 import CharacterList from "./components/CharacterList";
+import {connect} from "react-redux";
+import {fetchSuccess, fetchFail, fetchStart, getChars} from "./actions";
 
 
-
-function App() {
-    const [characters, setCharacters] = useState([])
-    console.log(characters)
+function App(props) {
 
     useEffect(() => {
-        axios.get(` https://rickandmortyapi.com/api/character`)
-            .then(res => {
-                setCharacters(res.data.results)
-            })
-            .catch(err => {
-                console.error(err)
-            })
+       props.getChars()
+
     },[])
-
-
 
     return (
     <div className="App">
       <h1>You Son Of A Bitch, I'm In!</h1>
         <h4>Async Redux Project</h4>
-        <CharacterList characters={characters}/>
+        <div className="char-list">
+            <CharacterList />
+        </div>
     </div>
   );
 }
 
-export default App;
+const  mapStateToProps = state => {
+    return({
+        characters: state.characters
+    })
+}
+
+export default  connect(mapStateToProps, { fetchStart, fetchSuccess, fetchFail, getChars })(App);
+
+
+
+
+
+

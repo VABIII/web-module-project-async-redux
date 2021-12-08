@@ -1,23 +1,35 @@
 import React from "react";
 import Character from "./Character";
-
+import "./CharacterList.css"
+import {connect} from "react-redux";
 
 
 const CharacterList = props => {
-    const {characters} = props
 
     return (
         <div>
             {
-                characters.map( char => {
-                  return   <Character key={char.id} char={char}/>
+                props.characters.map( (char, i) => {
+                  return (
+                    <div className="char-list" key={i}>
+                        <Character  key={char.id} char={char}/>
+                    </div>
+                  )
                 })
             }
         </div>
     );
 };
 
-export default CharacterList;
+
+const  mapStateToProps = state => {
+    return({
+        characters: state.characters
+    })
+}
+
+
+export default connect(mapStateToProps)(CharacterList);
 
 
 
